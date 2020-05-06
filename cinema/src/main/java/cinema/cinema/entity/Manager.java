@@ -6,6 +6,10 @@ import javax.persistence.*;
 
 @Entity
 public class Manager extends User implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+	
 	@OneToOne
 	private Cinema cinema;
 
@@ -15,6 +19,16 @@ public class Manager extends User implements Serializable {
 
 	public void setCinema(Cinema cinema) {
 		this.cinema = cinema;
+	}
+	
+
+	public Long getId() {
+		return id;
+	}
+	
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	

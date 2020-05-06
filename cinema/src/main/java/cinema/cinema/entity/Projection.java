@@ -24,7 +24,7 @@ public class Projection implements Serializable {
     @ManyToOne
     private Auditorium auditorium;//One auditorium has many projections
     @ManyToMany(mappedBy="ReservedCardsForMovies")
-    private Set<Viewer> viewers;//reservedCards = viewers.count();
+    private Set<Viewer> viewers = new HashSet<>();//reservedCards = viewers.count();
 
 	public Integer getPrice() {
 		return price;

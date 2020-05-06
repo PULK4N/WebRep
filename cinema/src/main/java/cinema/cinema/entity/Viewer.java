@@ -6,13 +6,16 @@ import javax.persistence.*;
 
 @Entity
 public class Viewer extends User implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 	@OneToMany
-	private Set<Score> WatchedMoviesWithScores;
+	private Set<Score> WatchedMoviesWithScores = new HashSet<>();
 	@ManyToMany
     @JoinTable(name = "reserving",
     		joinColumns = @JoinColumn(name = "viewer_id", referencedColumnName = "id"),
     inverseJoinColumns = @JoinColumn(name = "projection_id", referencedColumnName = "id"))
-	private Set<Projection> ReservedCardsForMovies;
+	private Set<Projection> ReservedCardsForMovies = new HashSet<>();
 	public Set<Score> getWatchedMoviesWithScores() {
 		return WatchedMoviesWithScores;
 	}

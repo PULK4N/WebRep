@@ -26,11 +26,11 @@ public class Movie implements Serializable {
     private Float grade;//nije ista klasa kao score, jer score se vezuje za gledaoca
     
     @OneToMany
-    private List<Score> scores;
+    private Set<Score> scores = new HashSet<>();;
     
     //jedan film se prikazuje u vise projekcija
     @OneToMany(mappedBy="movie")
-    private List<Projection> projections;
+    private Set<Projection> projections = new HashSet<>();;
 
 	public Long getId() {
 		return id;
@@ -80,19 +80,19 @@ public class Movie implements Serializable {
 		this.grade = grade;
 	}
 
-	public List<Score> getScores() {
+	public Set<Score> getScores() {
 		return scores;
 	}
 
-	public void setScores(List<Score> scores) {
+	public void setScores(Set<Score> scores) {
 		this.scores = scores;
 	}
 
-	public List<Projection> getProjections() {
+	public Set<Projection> getProjections() {
 		return projections;
 	}
 
-	public void setProjections(List<Projection> projections) {
+	public void setProjections(Set<Projection> projections) {
 		this.projections = projections;
 	}
 
