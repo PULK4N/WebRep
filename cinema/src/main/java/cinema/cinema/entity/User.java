@@ -3,11 +3,8 @@ package cinema.cinema.entity;
 import java.io.Serializable;
 import javax.persistence.*;
 
-@Entity
-public class User implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    protected Long id;
+@MappedSuperclass
+public abstract class User implements Serializable {
     
     @Column
 	protected String username;
@@ -28,18 +25,10 @@ public class User implements Serializable {
 	protected String email;
     
     @Column
-	protected java.time.LocalDate dateOfBirth;
+	protected String dateOfBirth;
     
     @Column
 	protected Role role;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 	public String getUsername() {
 		return username;
@@ -89,14 +78,6 @@ public class User implements Serializable {
 		this.email = email;
 	}
 
-	public java.time.LocalDate getDateOfBirth() {
-		return dateOfBirth;
-	}
-
-	public void setDateOfBirth(java.time.LocalDate dateOfBirth) {
-		this.dateOfBirth = dateOfBirth;
-	}
-
 	public Role getRole() {
 		return role;
 	}
@@ -104,4 +85,13 @@ public class User implements Serializable {
 	public void setRole(Role role) {
 		this.role = role;
 	}
+
+	public String getDateOfBirth() {
+		return dateOfBirth;
+	}
+
+	public void setDateOfBirth(String dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
+	}
+	
 }

@@ -25,7 +25,7 @@ public class Cinema implements Serializable {
     @OneToOne
     private Manager manager;//to do
     @OneToMany(mappedBy = "cinema")
-    private Set<Auditorium> auditoriums; //lista sala, 
+    private Set<Auditorium> auditoriums = new HashSet<>();; //lista sala, 
     
 	public Long getId() {
 		return id;
