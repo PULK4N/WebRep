@@ -14,7 +14,7 @@ public class Projection implements Serializable {
 	private Integer price;
 
     @Column
-	private java.time.LocalDateTime scheduledTime;
+	private String scheduledTime;
 
     @Column
 	private Integer reservedCards;
@@ -32,10 +32,10 @@ public class Projection implements Serializable {
 	public void setPrice(Integer price) {
 		this.price = price;
 	}
-	public java.time.LocalDateTime getScheduledTime() {
+	public String getScheduledTime() {
 		return scheduledTime;
 	}
-	public void setScheduledTime(java.time.LocalDateTime scheduledTime) {
+	public void setScheduledTime(String scheduledTime) {
 		this.scheduledTime = scheduledTime;
 	}
 	public Integer getReservedCards() {
