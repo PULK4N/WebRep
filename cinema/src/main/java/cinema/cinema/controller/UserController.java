@@ -11,11 +11,27 @@ import org.springframework.ui.Model;
 @Controller
 public class UserController{
 	private UserService userService;
-
+	
 	@GetMapping(value="/")
 	public String welcome() {
 		return "index.html";
 	}
+	
+	@GetMapping(value="/login")
+	public String loginPage() {
+		return "login.html";
+	}
+	
+	@GetMapping(value="/register")
+	public String registerPage() {
+		return "register.html";
+	}
+	
+	@GetMapping(value="/profile")
+	public String profilePage() {
+		return "profil.html";
+	}
+
 	@GetMapping("/Users")
 	public String getUsers(Model model){
 		List<User> userList = this.userService.findAll();
