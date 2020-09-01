@@ -68,7 +68,7 @@ $(document).ready(function () {
 });
 
 function searchTable(value,data){
-    var filteredData = [];
+    var filteredData = Array.from(data);
     var values = value.split(";");
     var comparisonValues = ['movieName',
     'movieGenre',
@@ -76,25 +76,17 @@ function searchTable(value,data){
     'movieGrade',
     'price',
     'scheduledTime']
-
-    if(data[0].length != 0){
-        for(var j=0; j<values.length;j++){
-            values[j] = values[j].toLowerCase();
-            for(var i=0;i<data.length;i++){
-                console.log(values[j]);
-                var comparisonValue = data[i][comparisonValues[j]].toLowerCase();
-                console.log("Comparing with " + comparisonValue);
-                if(comparisonValue.includes(values[j])){
-                    if(!(filteredData.includes(data[i]))){
-                        filteredData.push(data[i]);
-                    }
-                }else{
-                    if((filteredData.includes(data[i]))){
-                       filteredData.splice(filteredData.indexOf(data[i]), 1);
-                    }
+    for(var j=0; j<values.length;j++){
+        values[j] = values[j].toLowerCase();
+        for(var i=0;i<data.length;i++){
+            var comparisonValue = data[i][comparisonValues[j]].toLowerCase();
+            if(!(comparisonValue.includes(values[j]))){
+                if(filteredData.includes(data[i])){
+                    filteredData.splice(filteredData.indexOf(data[i]), 1);
                 }
             }
         }
+        
     }
     return filteredData;
 }
