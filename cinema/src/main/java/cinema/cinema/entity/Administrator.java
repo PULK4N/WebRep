@@ -1,19 +1,29 @@
 package cinema.cinema.entity;
 
 import javax.persistence.*;
-import java.io.*;
+
 
 @Entity
-public class Administrator extends User implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class Administrator extends User {
 
-	public Long getId() {
-		return id;
+	public Administrator(){
+		super();
 	}
 
-	public void setId(Long id) {
-		this.id = id;
-	}  
+	public Administrator(User administrator) {
+		super(administrator);
+		this.active = false;
+	}
+	
+	public Administrator(Administrator administrator) {
+		super((User)administrator);
+		this.active = false;
+	}
+
+	// @Override
+	// public String toString() {
+	// 	return "Administrator{"  +
+	// 		super.toString() +
+	// 		"}";
+	// }
 }

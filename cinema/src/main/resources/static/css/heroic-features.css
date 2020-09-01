@@ -1,0 +1,77 @@
+/*!
+ * Start Bootstrap - Heroic Features (https://startbootstrap.com/template-overviews/heroic-features)
+ * Copyright 2013-2019 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-heroic-features/blob/master/LICENSE)
+ */
+body {
+  padding-top: 0px;
+  background-color: #0a244d;
+}
+
+.white-background{
+  background-color: white;
+}
+
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: 17rem auto;
+}
+/* control image height */
+.card-img-top-250 {
+/*  min-height: 250px;*/
+/*  max-height: 250px;*/
+  overflow:hidden;
+}
+
+/* smoother transitions */
+.carousel-inner>.carousel-item.next.left,
+.carousel-inner>.carousel-item.prev.right
+{
+  transition: all 1s ease;
+}
+
+.card-img-top {
+  width: 100%;
+  height: 60%;
+  /* object-fit: cover; */
+}
+
+.card{
+  width: 100%;
+  height: 20vw;
+  /* object-fit: cover; */
+}
+
+.image-container {
+  position: relative;
+}
+
+.image {
+  opacity: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+
+.middle {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.image-container:hover .image {
+  opacity: 0.3;
+}
+
+.image-container:hover .middle {
+  opacity: 1;
+}
