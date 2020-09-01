@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.*;
 import javax.persistence.*;
 
+import cinema.cinema.entity.dto.ProjectionDTO;
+
 @Entity
 public class Projection implements Serializable {
     @Id
@@ -19,12 +21,41 @@ public class Projection implements Serializable {
     @Column
 	private Integer reservedCards;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST,fetch=FetchType.EAGER)
 	private Movie movie;//
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST,fetch=FetchType.EAGER)
     private Auditorium auditorium;//One auditorium has many projections
-    @ManyToMany(mappedBy="ReservedCardsForMovies")
-    private Set<Viewer> viewers = new HashSet<>();//reservedCards = viewers.count();
+    @ManyToMany(mappedBy="ReservedCardsForMovies",cascade = CascadeType.PERSIST,fetch=FetchType.EAGER)
+	private Set<Viewer> viewers = new HashSet<>();//reservedCards = viewers.count();
+	
+	public Projection() {
+		super();
+	}
+
+	public Projection(ProjectionDTO projectionDTO) {
+		this.price = projectionDTO.getPrice();
+		this.scheduledTime = projectionDTO.getScheduledTime();
+		this.reservedCards = projectionDTO.getReservedCards();
+	}
+
+
+	public Projection(Long id, Integer price, String scheduledTime, Integer reservedCards, Movie movie, Auditorium auditorium, Set<Viewer> viewers) {
+		this.id = id;
+		this.price = price;
+		this.scheduledTime = scheduledTime;
+		this.reservedCards = reservedCards;
+		this.movie = movie;
+		this.auditorium = auditorium;
+		this.viewers = viewers;
+	}
+
+
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public Integer getPrice() {
 		return price;
@@ -63,6 +94,16 @@ public class Projection implements Serializable {
 		this.viewers = viewers;
 	}
 
-
+	@Override
+	public String toString(){
+		return "Projection{" +
+		"id=" + id +
+		", price=" + price + 
+		", scheduledTime='" + scheduledTime + '\'' +
+		", reservedCards=" + reservedCards + 
+		", movie=" + movie + 
+		", auditorium=" + auditorium + 
+		'}';
+	}
     
 }
